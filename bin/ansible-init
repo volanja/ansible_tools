@@ -1,0 +1,16 @@
+# coding: utf-8
+require 'ansible_tools'
+
+
+content = <<-EOF
+Usage: ansbile-init [simple]
+  simple  create setup.yml, roles/common
+EOF
+
+if ARGV[0].to_s == "simple"
+	AnsibleTools.init_simple
+elsif ARGV[0].nil?
+	AnsibleTools.init
+else
+	puts content
+end

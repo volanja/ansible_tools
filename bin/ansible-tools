@@ -1,0 +1,3 @@
+# coding: utf-8
+require 'ansible_tools'
+AnsibleTools.run

@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = AnsibleTools::VERSION
   spec.authors       = ["volanja"]
   spec.email         = ["volaaanja@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.description   = %q{Ansible Tools e.g. Create directory by BestPractice}
+  spec.summary       = %q{Ansible Tools e.g. Create directory by BestPractice}
+  spec.homepage      = "https://github.com/volanja"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
