@@ -18,10 +18,18 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
-
 ```
-$ ansbile-init
+$ ansible-tools
+Commands:
+  ansible-tools help [COMMAND]  # Describe available commands or one specific command
+  ansible-tools init [-s][-r]   # create ansible files by BestPractice
+  ansible-tools show            # show ansible valiables
+```
+
+### BestPractice
+[Best Practices - ANSIBLEWORKS](http://www.ansibleworks.com/docs/playbooks_best_practices.html)
+```
+$ ansbile-tools init
 		create	roles/common/tasks
 		create	roles/common/handlers
 		create	roles/common/templates
@@ -43,9 +51,9 @@ $ ansbile-init
 		create	host_var/hostname2
 ```
 
-# Simple
+### Simple
 ```
-$ ansbile-init simple
+$ ansbile-tools init -s
 		create	roles/common/tasks
 		create	roles/common/handlers
 		create	roles/common/templates
@@ -59,17 +67,12 @@ $ ansbile-init simple
 		create	roles/common/file/bar.txt
 ```
 
+### Add Role
 ```
-Usage: ansbile-init [simple]
-  simple  create setup.yml, roles/common
-```
-
-# Add Role(not attribute)
-```
-$ ansbile-roles add <roles name>
+$ ansbile-tools init -r <roles name>
 ```
 
-# Show Variables(not attribute)
+### Show Variables(not attribute)
 ```
 $ ansbile-show vars
 ```

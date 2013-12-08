@@ -3,7 +3,7 @@ require "fileutils"
 
 module AnsibleTools
 
-  # command ansible-init
+  # command ansible-tools init
   def self.init()
     simple = safe_list_simple('common')
     complex = safe_list_complex()
@@ -16,13 +16,22 @@ module AnsibleTools
 
   end
   
-  # command ansible-init simple
+  # command ansible-tools init -s
   def self.init_simple()
     simple = safe_list_simple('common')
     # dir
     simple[:dir].each { |dir| safe_mkdir(dir) }
     # file
     simple[:file].each { |file| safe_touch(file) }
+  end
+
+  # command ansible-tools init -r <rolename>
+  def self.init_role(name)
+    role = safe_list_simple("#{name}")
+    # dir
+    role[:dir].each { |dir| safe_mkdir(dir) }
+    # file
+    role[:file].each { |file| safe_touch(file) }
   end
 
   def self.safe_list_simple(role)

@@ -1,3 +1,31 @@
+#! /usr/bin/env ruby
 # coding: utf-8
+
 require 'ansible_tools'
-AnsibleTools.run
+require 'rubygems'
+require 'thor'
+
+class Cli < Thor
+
+  desc "init [-s][-r]", "create ansible files by BestPractice"
+  option :simple, :type => :boolean, :aliases => '-s', :desc => "simple-mode, create only setup.yml, roles/common"
+  option :role, :type => :string, :aliases => '-r', :desc => "create roles/ROLE"
+  def init
+    if options[:simple]
+      AnsibleTools.init_simple
+    elsif options[:role]
+      AnsibleTools.init_role("#{options[:role]}")
+    else
+      AnsibleTools.init
+    end
+  end
+
+  desc "show", "show ansible valiables"
+  def show
+    puts 'show'
+  end
+end
+
+Cli.start
+
+exit 0
