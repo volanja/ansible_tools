@@ -23,11 +23,13 @@ $ ansible-tools
 Commands:
   ansible-tools help [COMMAND]  # Describe available commands or one specific command
   ansible-tools init [-s][-r]   # create ansible files by BestPractice
-  ansible-tools show            # show ansible valiables
+  ansible-tools show            # show ansible valiables in vars/main.yml
+  ansible-tools version         # show version
 ```
 
 ### BestPractice
 [Best Practices - ANSIBLEWORKS](http://www.ansibleworks.com/docs/playbooks_best_practices.html)
+
 ```
 $ ansbile-tools init
 		create	roles/common/tasks
@@ -52,6 +54,7 @@ $ ansbile-tools init
 ```
 
 ### Simple
+
 ```
 $ ansbile-tools init -s
 		create	roles/common/tasks
@@ -68,13 +71,46 @@ $ ansbile-tools init -s
 ```
 
 ### Add Role
+
 ```
 $ ansbile-tools init -r <roles name>
+
+$ ansible-tools init -r gitlab
+		create	roles/gitlab/tasks
+		create	roles/gitlab/handlers
+		create	roles/gitlab/templates
+		create	roles/gitlab/vars
+		create	roles/gitlab/file
+		create	site.yml
+		create	roles/gitlab/tasks/main.yml
+		create	roles/gitlab/handlers/main.yml
+		create	roles/gitlab/templates/foo.conf.j2
+		create	roles/gitlab/vars/main.yml
+		create	roles/gitlab/file/bar.txt
 ```
 
-### Show Variables(not attribute)
+### Show Variables
+Search vars/main.yml and write list
+
 ```
-$ ansbile-show vars
+$ ansbile-tools show
++----------------------------------------------------------------------------+
+|             File             |          Key          |        Value        |
++----------------------------------------------------------------------------+
+| roles/gitlab/vars/main.yml   | mysql_gitlab_password | password            |
+| roles/gitlab/vars/main.yml   | mysql_gitlab_database | gitlabhq_production |
+| roles/mariadb/vars/main.yml  | mysql_root_password   | password            |
+| roles/Packages/vars/main.yml | www_port              |                  80 |
+| roles/ruby/vars/main.yml     | ruby_ver              | 2.0.0-p247          |
++----------------------------------------------------------------------------+
+```
+
+### Show Variables
+show version
+
+```
+$ ansbile-tools version
+0.0.1
 ```
 
 ## Contributing

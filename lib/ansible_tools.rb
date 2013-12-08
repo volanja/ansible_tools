@@ -1,5 +1,7 @@
 require "ansible_tools/version"
 require "fileutils"
+require "yaml"
+require 'ruport'
 
 module AnsibleTools
 
@@ -92,6 +94,35 @@ module AnsibleTools
     end
   end
 
+  # command ansible-tools show
+  def self.show()
+    begin
+      if Dir.glob("**/vars/*").count == 0
+        puts 'Not Found'
+        exit 1
+      end
+      table = Ruport::Data::Table.new
+      table.column_names = %w[File Key Value]
+      Dir.glob("**/vars/*") {|f|
+        next unless FileTest.file?(f) #skip directory
+        yml = YAML.load_file(f)
+        if yml == false
+          puts "No Variables in #{f}"
+          next
+        end
+        yml.each{|key,value|
+          table << [f,key,value]
+        }
+      }
+      if table.count > 0
+        puts table.to_text
+      end
+    rescue
+      puts 'Sorry. Error hanppend..'
+      exit 1
+    end
+  end
+
   class TermColor
     class << self
       # 色を解除
@@ -101,7 +132,7 @@ module AnsibleTools
       def red     ; c 31; end 
       def green   ; c 32; end 
   
-      # カラーシーケンスを出力する
+      # カラーシーケンスの出力
       def c(num)
         print "\e[#{num.to_s}m"
       end 

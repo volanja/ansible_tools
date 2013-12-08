@@ -20,9 +20,14 @@ class Cli < Thor
     end
   end
 
-  desc "show", "show ansible valiables"
+  desc "show", "show ansible valiables in vars/main.yml"
   def show
-    puts 'show'
+    AnsibleTools.show
+  end
+
+  desc "version", "show version"
+  def version
+    puts AnsibleTools::VERSION
   end
 end
 
