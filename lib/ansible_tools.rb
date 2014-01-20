@@ -59,8 +59,8 @@ module AnsibleTools
 
   def self.safe_list_complex()
     dir = Array.new
-    group = 'group_var'
-    host = 'host_var'
+    group = 'group_vars'
+    host = 'host_vars'
     dir = [group, host]
     file = ["production", "stage", "#{group}/group1", "#{group}/group2", "#{host}/hostname1", "#{host}/hostname2"]
     return {:dir => dir, :file => file}
