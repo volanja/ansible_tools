@@ -43,7 +43,7 @@ module AnsibleTools
     handlers =  "#{dir_role}/handlers"
     templates = "#{dir_role}/templates"
     vars = "#{dir_role}/vars"
-    files = "#{dir_role}/file"
+    files = "#{dir_role}/files"
     dir = [tasks,handlers,templates,vars,files]
 
     file = Array.new
