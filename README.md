@@ -28,7 +28,7 @@ $ ansbile-tools init
 		create	roles/common/handlers
 		create	roles/common/templates
 		create	roles/common/vars
-		create	roles/common/file
+		create	roles/common/files
 		create	group_vars
 		create	host_vars
 		create	site.yml
