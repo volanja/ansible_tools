@@ -4,15 +4,7 @@ Ansible Tools e.g. Create directory by BestPractice
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'ansible_tools'
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
+Install it yourself as:
 
     $ gem install ansible_tools
 
@@ -37,20 +29,20 @@ $ ansbile-tools init
 		create	roles/common/templates
 		create	roles/common/vars
 		create	roles/common/file
-		create	group_var
-		create	host_var
+		create	group_vars
+		create	host_vars
 		create	site.yml
 		create	roles/common/tasks/main.yml
 		create	roles/common/handlers/main.yml
 		create	roles/common/templates/foo.conf.j2
 		create	roles/common/vars/main.yml
-		create	roles/common/file/bar.txt
+		create	roles/common/files/bar.txt
 		create	production
 		create	stage
-		create	group_var/group1
-		create	group_var/group2
-		create	host_var/hostname1
-		create	host_var/hostname2
+		create	group_vars/group1
+		create	group_vars/group2
+		create	host_vars/hostname1
+		create	host_vars/hostname2
 ```
 
 ### Simple
@@ -61,13 +53,13 @@ $ ansbile-tools init -s
 		create	roles/common/handlers
 		create	roles/common/templates
 		create	roles/common/vars
-		create	roles/common/file
+		create	roles/common/files
 		create	site.yml
 		create	roles/common/tasks/main.yml
 		create	roles/common/handlers/main.yml
 		create	roles/common/templates/foo.conf.j2
 		create	roles/common/vars/main.yml
-		create	roles/common/file/bar.txt
+		create	roles/common/files/bar.txt
 ```
 
 ### Add Role
@@ -80,13 +72,13 @@ $ ansible-tools init -r gitlab
 		create	roles/gitlab/handlers
 		create	roles/gitlab/templates
 		create	roles/gitlab/vars
-		create	roles/gitlab/file
+		create	roles/gitlab/files
 		create	site.yml
 		create	roles/gitlab/tasks/main.yml
 		create	roles/gitlab/handlers/main.yml
 		create	roles/gitlab/templates/foo.conf.j2
 		create	roles/gitlab/vars/main.yml
-		create	roles/gitlab/file/bar.txt
+		create	roles/gitlab/files/bar.txt
 ```
 
 ### Show Variables
@@ -110,7 +102,7 @@ show version
 
 ```
 $ ansbile-tools version
-0.0.1
+0.0.3.1
 ```
 
 ## Contributing
