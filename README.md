@@ -2,6 +2,8 @@
 
 Ansible Tools e.g. Create directory by BestPractice
 
+[![Code Climate](https://codeclimate.com/github/volanja/ansible_tools.png)](https://codeclimate.com/github/volanja/ansible_tools)
+
 ## Installation
 
 Install it yourself as:
