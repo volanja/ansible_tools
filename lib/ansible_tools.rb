@@ -6,34 +6,34 @@ require 'ruport'
 module AnsibleTools
 
   # command ansible-tools init
-  def self.init()
+  def self.init(dir_only)
     simple = safe_list_simple('common')
     complex = safe_list_complex()
     # dir
     simple[:dir].each { |dir| safe_mkdir(dir) }
     complex[:dir].each { |dir| safe_mkdir(dir) }
     # file
-    simple[:file].each { |file| safe_touch(file) }
-    complex[:file].each { |file| safe_touch(file) }
+    simple[:file].each { |file| safe_touch(file) } unless dir_only
+    complex[:file].each { |file| safe_touch(file) } unless dir_only
 
   end
-  
+
   # command ansible-tools init -s
-  def self.init_simple()
+  def self.init_simple(dir_only)
     simple = safe_list_simple('common')
     # dir
     simple[:dir].each { |dir| safe_mkdir(dir) }
     # file
-    simple[:file].each { |file| safe_touch(file) }
+    simple[:file].each { |file| safe_touch(file) } unless dir_only
   end
 
   # command ansible-tools init -r <rolename>
-  def self.init_role(name)
+  def self.init_role(name, dir_only)
     role = safe_list_simple("#{name}")
     # dir
     role[:dir].each { |dir| safe_mkdir(dir) }
     # file
-    role[:file].each { |file| safe_touch(file) }
+    role[:file].each { |file| safe_touch(file) } unless dir_only
   end
 
   def self.safe_list_simple(role)
@@ -65,7 +65,7 @@ module AnsibleTools
     file = ["production", "stage", "#{group}/group1", "#{group}/group2", "#{host}/hostname1", "#{host}/hostname2"]
     return {:dir => dir, :file => file}
   end
-  
+
   def self.safe_mkdir(dir)
     unless FileTest.exist?("#{dir}")
       FileUtils.mkdir_p("#{dir}")
@@ -87,7 +87,7 @@ module AnsibleTools
       TermColor.green
       puts "\t\tcreate\t#{file}"
       TermColor.reset
-    else 
+    else
       TermColor.red
       puts "\t\texists\t#{file}"
       TermColor.reset
@@ -126,17 +126,17 @@ module AnsibleTools
   class TermColor
     class << self
       # 色を解除
-      def reset   ; c 0 ; end 
-  
+      def reset   ; c 0 ; end
+
       # 各色
-      def red     ; c 31; end 
-      def green   ; c 32; end 
-  
+      def red     ; c 31; end
+      def green   ; c 32; end
+
       # カラーシーケンスの出力
       def c(num)
         print "\e[#{num.to_s}m"
-      end 
-    end 
+      end
+    end
   end
 
 end
