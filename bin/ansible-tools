@@ -7,17 +7,17 @@ require 'thor'
 
 class Cli < Thor
 
-  desc "init [-s][-r][-d]", "create ansible files by BestPractice"
+  desc "init [-s][-r][-y]", "create ansible files by BestPractice"
   option :simple, :type => :boolean, :aliases => '-s', :desc => "simple-mode, create only setup.yml, roles/common"
   option :role, :type => :string, :aliases => '-r', :desc => "create roles/ROLE"
-  option 'dir-only', :type => :boolean, :aliases => '-d', :desc => "create only directory"
+  option :"yml-only", :type => :boolean, :aliases => '-y', :desc => "create directory and yml"
   def init
     if options[:simple]
-      AnsibleTools.init_simple(options['dir-only'])
+      AnsibleTools.init_simple(options[:"yml-only"])
     elsif options[:role]
-      AnsibleTools.init_role("#{options[:role]}", options['dir-only'])
+      AnsibleTools.init_role("#{options[:role]}", options[:"yml-only"])
     else
-      AnsibleTools.init(options['dir-only'])
+      AnsibleTools.init(options[:"yml-only"])
     end
   end
 

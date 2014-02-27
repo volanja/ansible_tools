@@ -8,25 +8,26 @@ Ansible Tools e.g. Create directory by BestPractice
 ## Installation
 
 Install it yourself as:
-
-    $ gem install ansible_tools
+```
+$ gem install ansible_tools
+```
 
 ## Usage
 
 ```
 $ ansible-tools
 Commands:
-  ansible-tools help [COMMAND]  # Describe available commands or one specific command
-  ansible-tools init [-s][-r]   # create ansible files by BestPractice
-  ansible-tools show            # show ansible valiables in vars/main.yml
-  ansible-tools version         # show version
+  ansible-tools help [COMMAND]      # Describe available commands or one specific command
+  ansible-tools init [-s][-r][-y]  # create ansible files by BestPractice
+  ansible-tools show                # show ansible valiables in vars/main.yml
+  ansible-tools version             # show version
 ```
 
 ### BestPractice
 [Best Practices - ANSIBLEWORKS](http://www.ansibleworks.com/docs/playbooks_best_practices.html)
 
 ```
-$ ansbile-tools init
+$ ansbile-tools init [-y]
 		create	roles/common/tasks
 		create	roles/common/handlers
 		create	roles/common/templates
@@ -37,21 +38,23 @@ $ ansbile-tools init
 		create	site.yml
 		create	roles/common/tasks/main.yml
 		create	roles/common/handlers/main.yml
-		create	roles/common/templates/foo.conf.j2
+		create	roles/common/templates/foo.conf.j2  #(*1)
 		create	roles/common/vars/main.yml
-		create	roles/common/files/bar.txt
-		create	production
-		create	stage
-		create	group_vars/group1
-		create	group_vars/group2
-		create	host_vars/hostname1
-		create	host_vars/hostname2
+		create	roles/common/files/bar.txt  #(*1)
+		create	production  #(*1)
+		create	stage       #(*1)
+		create	group_vars/group1  #(*1)
+		create	group_vars/group2  #(*1)
+		create	host_vars/hostname1  #(*1)
+		create	host_vars/hostname2  #(*1)
+
+(*1)...if set [-y], this file is not create.
 ```
 
 ### Simple
 
 ```
-$ ansbile-tools init -s
+$ ansbile-tools init -s [-y]
 		create	roles/common/tasks
 		create	roles/common/handlers
 		create	roles/common/templates
@@ -60,15 +63,17 @@ $ ansbile-tools init -s
 		create	site.yml
 		create	roles/common/tasks/main.yml
 		create	roles/common/handlers/main.yml
-		create	roles/common/templates/foo.conf.j2
+		create	roles/common/templates/foo.conf.j2  #(*1)
 		create	roles/common/vars/main.yml
-		create	roles/common/files/bar.txt
+		create	roles/common/files/bar.txt  #(*1)
+
+(*1)...if set [-y], this file is not create.
 ```
 
 ### Add Role
 
 ```
-$ ansbile-tools init -r <roles name>
+$ ansbile-tools init -r <roles name> [-y]
 
 $ ansible-tools init -r gitlab
 		create	roles/gitlab/tasks
@@ -79,9 +84,11 @@ $ ansible-tools init -r gitlab
 		create	site.yml
 		create	roles/gitlab/tasks/main.yml
 		create	roles/gitlab/handlers/main.yml
-		create	roles/gitlab/templates/foo.conf.j2
+		create	roles/gitlab/templates/foo.conf.j2  #(*1)
 		create	roles/gitlab/vars/main.yml
-		create	roles/gitlab/files/bar.txt
+		create	roles/gitlab/files/bar.txt  #(*1)
+
+(*1)...if set [-y], this file is not create.
 ```
 
 ### Show Variables
@@ -105,7 +112,7 @@ show version
 
 ```
 $ ansbile-tools version
-0.0.3.1
+0.0.4
 ```
 
 ## Contributing
@@ -115,6 +122,9 @@ $ ansbile-tools version
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## History
+0.0.4  Add Option init [-y]
 
 ## TODO
 + Make Test
