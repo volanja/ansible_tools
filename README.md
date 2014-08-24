@@ -2,6 +2,7 @@
 
 Ansible Tools e.g. Create directory by BestPractice
 
+[![Gem Version](https://badge.fury.io/rb/ansible_tools.png)](http://badge.fury.io/rb/ansible_tools)
 [![Code Climate](https://codeclimate.com/github/volanja/ansible_tools.png)](https://codeclimate.com/github/volanja/ansible_tools)
 [![Coverage Status](https://coveralls.io/repos/volanja/ansible_tools/badge.png)](https://coveralls.io/r/volanja/ansible_tools)
 
