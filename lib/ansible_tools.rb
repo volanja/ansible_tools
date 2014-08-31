@@ -123,6 +123,34 @@ module AnsibleTools
       end
       table = Ruport::Data::Table.new
       table.column_names = %w[File Key Value]
+
+      # search *.yml
+      Dir.glob("*.yml") {|f|
+        next unless FileTest.file?(f) #skip directory
+        yml = YAML.load_file(f)
+        if yml == false
+          puts "No Variables in #{f}"
+          next
+        end
+        yml.each{|h|
+          h["vars"].each{|key,value|
+            table << [f,key,value]
+          }
+        }
+      }
+      # search */*.yml e.g. group_vars, host_vars
+      Dir.glob("*/*.yml") {|f|
+        next unless FileTest.file?(f) #skip directory
+        yml = YAML.load_file(f)
+        if yml == false
+          puts "No Variables in #{f}"
+          next
+        end
+        yml.each{|key,value|
+          table << [f,key,value]
+        }
+      }
+      # search roles/*/vars/*.yml
       Dir.glob("**/vars/*") {|f|
         next unless FileTest.file?(f) #skip directory
         yml = YAML.load_file(f)

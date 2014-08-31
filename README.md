@@ -93,13 +93,16 @@ $ ansible-tools init -r gitlab
 ```
 
 ### Show Variables
-Search vars/main.yml and write list
+Search file and write list
+file =>  `roles/*/vars/main.yml`, `group_vars/*.yml`, `host_vars/*.yml`, `*.yml`
 
 ```
 $ ansbile-tools show
 +----------------------------------------------------------------------------+
 |             File             |          Key          |        Value        |
 +----------------------------------------------------------------------------+
+| host_vars/main.yml           | var1                  | num1                |
+| group_vars/main.yml          | var2                  | num2                |
 | roles/gitlab/vars/main.yml   | mysql_gitlab_password | password            |
 | roles/gitlab/vars/main.yml   | mysql_gitlab_database | gitlabhq_production |
 | roles/mariadb/vars/main.yml  | mysql_root_password   | password            |
