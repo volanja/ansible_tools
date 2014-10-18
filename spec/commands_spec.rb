@@ -1,5 +1,6 @@
 # coding: utf-8
 require 'ansible_tools'
+require 'yaml'
 
 test_dir = "tmp"
 
@@ -26,82 +27,35 @@ describe "テスト" do
 
   # ディレクトリの存在をチェックする。
   def expect_dir_exist(array)
-    array["created_dir"].each{|d|
+    array.each{|d|
       expect(File.directory?(d)).to be_truthy
     }
   end
   # ファイルの存在をチェックする。
   def expect_file_exist(array)
-    array["created_file"].each{|f|
+    array.each{|f|
       expect(FileTest.exist?(f)).to be_truthy
     }
   end
 
+  #YAMLファイルをロードする。
+  def load_yaml(path)
+    yaml = File.open( File.dirname(__FILE__) + path).read
+    return YAML.load(yaml)
+  end
+
   it "init(yml-only = false)" do
     AnsibleTools.init(false)
-    array = init_false
-    expect_file_exist(array)
-    expect_dir_exist(array)
+    yaml = load_yaml("/lists/init_false.yml")
+    expect_file_exist(yaml["created_file"])
+    expect_dir_exist(yaml["created_dir"])
   end
 
   it "init(yml-only = true)" do
     AnsibleTools.init(true)
-    array = init_true
-    expect_file_exist(array)
-    expect_dir_exist(array)
+    yaml = load_yaml("/lists/init_true.yml")
+    expect_file_exist(yaml["created_file"])
+    expect_dir_exist(yaml["created_dir"])
   end
 
-  def init_false
-    res = Hash.new
-    res["created_file"] = [
-      "group_vars",
-      "host_vars",
-      "site.yml",
-      "roles/common/tasks/main.yml",
-      "roles/common/handlers/main.yml",
-      "roles/common/templates/foo.conf.j2",
-      "roles/common/vars/main.yml",
-      "roles/common/files/bar.txt",
-      "production",
-      "stage",
-      "group_vars/group1",
-      "group_vars/group2",
-      "host_vars/hostname1",
-      "host_vars/hostname2"
-    ]
-    res["created_dir"] = [
-      "roles",
-      "roles/common",
-      "roles/common/tasks",
-      "roles/common/handlers",
-      "roles/common/templates",
-      "roles/common/vars",
-      "roles/common/files",
-      "group_vars",
-      "host_vars",
-    ]
-    return res
-  end
-
-  def init_true
-    res = Hash.new
-    res["created_file"] = [
-      "group_vars",
-      "host_vars",
-      "site.yml",
-      "roles/common/tasks/main.yml",
-      "roles/common/handlers/main.yml",
-      "roles/common/vars/main.yml",
-    ]
-    res["created_dir"] = [
-      "roles",
-      "roles/common",
-      "roles/common/tasks",
-      "roles/common/handlers",
-      "roles/common/templates",
-      "roles/common/vars",
-      "roles/common/files",
-    ]
-    return res
-  end
 end

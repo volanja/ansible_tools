@@ -1,0 +1,15 @@
+"created_file":
+  - "group_vars"
+  - "host_vars"
+  - "site.yml"
+  - "roles/common/tasks/main.yml"
+  - "roles/common/handlers/main.yml"
+  - "roles/common/vars/main.yml"
+"created_dir":
+  - "roles"
+  - "roles/common"
+  - "roles/common/tasks"
+  - "roles/common/handlers"
+  - "roles/common/templates"
+  - "roles/common/vars"
+  - "roles/common/files"
