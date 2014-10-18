@@ -1,4 +1,4 @@
-"created_file":
+"file":
   - "group_vars"
   - "host_vars"
   - "site.yml"
@@ -13,7 +13,7 @@
   - "group_vars/group2"
   - "host_vars/hostname1"
   - "host_vars/hostname2"
-"created_dir":
+"dir":
   - "roles"
   - "roles/common"
   - "roles/common/tasks"

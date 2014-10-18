@@ -47,15 +47,15 @@ describe "テスト" do
   it "init(yml-only = false)" do
     AnsibleTools.init(false)
     yaml = load_yaml("/lists/init_false.yml")
-    expect_file_exist(yaml["created_file"])
-    expect_dir_exist(yaml["created_dir"])
+    expect_file_exist(yaml["file"])
+    expect_dir_exist(yaml["dir"])
   end
 
   it "init(yml-only = true)" do
     AnsibleTools.init(true)
     yaml = load_yaml("/lists/init_true.yml")
-    expect_file_exist(yaml["created_file"])
-    expect_dir_exist(yaml["created_dir"])
+    expect_file_exist(yaml["file"])
+    expect_dir_exist(yaml["dir"])
   end
 
 end
