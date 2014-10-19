@@ -1,0 +1,15 @@
+"file":
+  - "site.yml"
+  - "roles/common/tasks/main.yml"
+  - "roles/common/handlers/main.yml"
+  - "roles/common/templates/foo.conf.j2"
+  - "roles/common/vars/main.yml"
+  - "roles/common/files/bar.txt"
+"dir":
+  - "roles"
+  - "roles/common"
+  - "roles/common/tasks"
+  - "roles/common/handlers"
+  - "roles/common/templates"
+  - "roles/common/vars"
+  - "roles/common/files"

@@ -44,6 +44,7 @@ describe "テスト" do
     return YAML.load(yaml)
   end
 
+  # run: ansbile-tools init
   it "init(yml-only = false)" do
     AnsibleTools.init(false)
     yaml = load_yaml("/lists/init_false.yml")
@@ -51,9 +52,42 @@ describe "テスト" do
     expect_dir_exist(yaml["dir"])
   end
 
+  # run: ansbile-tools init -y
   it "init(yml-only = true)" do
     AnsibleTools.init(true)
     yaml = load_yaml("/lists/init_true.yml")
+    expect_file_exist(yaml["file"])
+    expect_dir_exist(yaml["dir"])
+  end
+
+  # run: ansbile-tools init -s
+  it "init simple (yml-only = false)" do
+    AnsibleTools.init_simple(false)
+    yaml = load_yaml("/lists/init_simple_false.yml")
+    expect_file_exist(yaml["file"])
+    expect_dir_exist(yaml["dir"])
+  end
+
+  # run: ansbile-tools init -s -y
+  it "init simple (yml-only = true)" do
+    AnsibleTools.init_simple(true)
+    yaml = load_yaml("/lists/init_simple_true.yml")
+    expect_file_exist(yaml["file"])
+    expect_dir_exist(yaml["dir"])
+  end
+
+  # run: ansbile-tools init -r gitlab
+  it "init role (yml-only = false)" do
+    AnsibleTools.init_role("gitlab", false)
+    yaml = load_yaml("/lists/init_role_false.yml")
+    expect_file_exist(yaml["file"])
+    expect_dir_exist(yaml["dir"])
+  end
+
+  # run: ansbile-tools init -r gitlab -y
+  it "init role (yml-only = true)" do
+    AnsibleTools.init_role("gitlab", true)
+    yaml = load_yaml("/lists/init_role_true.yml")
     expect_file_exist(yaml["file"])
     expect_dir_exist(yaml["dir"])
   end

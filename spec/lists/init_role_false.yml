@@ -1,0 +1,15 @@
+"file":
+  - "site.yml"
+  - "roles/gitlab/tasks/main.yml"
+  - "roles/gitlab/handlers/main.yml"
+  - "roles/gitlab/templates/foo.conf.j2"
+  - "roles/gitlab/vars/main.yml"
+  - "roles/gitlab/files/bar.txt"
+"dir":
+  - "roles"
+  - "roles/gitlab"
+  - "roles/gitlab/tasks"
+  - "roles/gitlab/handlers"
+  - "roles/gitlab/templates"
+  - "roles/gitlab/vars"
+  - "roles/gitlab/files"

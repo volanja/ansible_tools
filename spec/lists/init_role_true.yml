@@ -1,0 +1,13 @@
+"file":
+  - "site.yml"
+  - "roles/gitlab/tasks/main.yml"
+  - "roles/gitlab/handlers/main.yml"
+  - "roles/gitlab/vars/main.yml"
+"dir":
+  - "roles"
+  - "roles/gitlab"
+  - "roles/gitlab/tasks"
+  - "roles/gitlab/handlers"
+  - "roles/gitlab/templates"
+  - "roles/gitlab/vars"
+  - "roles/gitlab/files"

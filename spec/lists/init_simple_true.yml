@@ -1,0 +1,13 @@
+"file":
+  - "site.yml"
+  - "roles/common/tasks/main.yml"
+  - "roles/common/handlers/main.yml"
+  - "roles/common/vars/main.yml"
+"dir":
+  - "roles"
+  - "roles/common"
+  - "roles/common/tasks"
+  - "roles/common/handlers"
+  - "roles/common/templates"
+  - "roles/common/vars"
+  - "roles/common/files"
