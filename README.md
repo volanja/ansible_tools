@@ -28,7 +28,7 @@ Commands:
 [Best Practices - ANSIBLEWORKS](http://www.ansibleworks.com/docs/playbooks_best_practices.html)
 
 ```
-$ ansbile-tools init [-y]
+$ ansible-tools init [-y]
 		create	roles/common/tasks
 		create	roles/common/handlers
 		create	roles/common/templates
@@ -55,7 +55,7 @@ $ ansbile-tools init [-y]
 ### Simple
 
 ```
-$ ansbile-tools init -s [-y]
+$ ansible-tools init -s [-y]
 		create	roles/common/tasks
 		create	roles/common/handlers
 		create	roles/common/templates
@@ -74,7 +74,7 @@ $ ansbile-tools init -s [-y]
 ### Add Role
 
 ```
-$ ansbile-tools init -r <roles name> [-y]
+$ ansible-tools init -r <roles name> [-y]
 
 $ ansible-tools init -r gitlab
 		create	roles/gitlab/tasks
@@ -97,7 +97,7 @@ Search file and write list
 file =>  `roles/*/vars/main.yml`, `group_vars/*.yml`, `host_vars/*.yml`, `*.yml`
 
 ```
-$ ansbile-tools show
+$ ansible-tools show
 +----------------------------------------------------------------------------+
 |             File             |          Key          |        Value        |
 +----------------------------------------------------------------------------+
@@ -115,7 +115,7 @@ $ ansbile-tools show
 show version
 
 ```
-$ ansbile-tools version
+$ ansible-tools version
 0.0.4
 ```
 
