@@ -165,9 +165,9 @@ module AnsibleTools
       if table.count > 0
         puts table.to_text
       end
-    rescue
-      puts 'Sorry. Error hanppend..'
-      exit 1
+    rescue => e
+      puts e
+      fail 'Sorry. Error hanppend..'
     end
   end
 
