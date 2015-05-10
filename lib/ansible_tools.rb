@@ -124,46 +124,34 @@ module AnsibleTools
       table = Ruport::Data::Table.new
       table.column_names = %w[File Key Value]
 
-      # search *.yml
-      Dir.glob("*.yml") {|f|
-        next unless FileTest.file?(f) #skip directory
-        yml = YAML.load_file(f)
-        if yml == false
-          puts "No Variables in #{f}"
-          next
-        end
-        yml.each{|h|
-          if h.instance_of?(Hash) && h.has_key?("vars") 
-            h["vars"].each{|key,value|
+      regexp_str = Array.new
+      regexp_str << "*.yml"     # search *.yml
+      regexp_str << "*/*.yml"   # search */*.yml e.g. group_vars, host_vars
+      regexp_str << "**/vars/*" # search roles/*/vars/*.yml
+      regexp_str.each{|str|
+        Dir.glob(str) {|f|
+          next unless FileTest.file?(f) #skip directory
+          yml = YAML.load_file(f)
+          if yml == false
+            puts "No Variables in #{f}"
+            next
+          end
+          if str == "*.yml"
+            yml.each{|h|
+              if h.instance_of?(Hash) && h.has_key?("vars") 
+                h["vars"].each{|key,value|
+                  table << [f,key,value]
+                }
+              end
+            }
+          else
+            yml.each{|key,value|
               table << [f,key,value]
             }
           end
         }
       }
-      # search */*.yml e.g. group_vars, host_vars
-      Dir.glob("*/*.yml") {|f|
-        next unless FileTest.file?(f) #skip directory
-        yml = YAML.load_file(f)
-        if yml == false
-          puts "No Variables in #{f}"
-          next
-        end
-        yml.each{|key,value|
-          table << [f,key,value]
-        }
-      }
-      # search roles/*/vars/*.yml
-      Dir.glob("**/vars/*") {|f|
-        next unless FileTest.file?(f) #skip directory
-        yml = YAML.load_file(f)
-        if yml == false
-          puts "No Variables in #{f}"
-          next
-        end
-        yml.each{|key,value|
-          table << [f,key,value]
-        }
-      }
+
       if table.count > 0
         puts table.to_text
       end
