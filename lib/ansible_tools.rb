@@ -133,9 +133,11 @@ module AnsibleTools
           next
         end
         yml.each{|h|
-          h["vars"].each{|key,value|
-            table << [f,key,value]
-          }
+          if h.instance_of?(Hash) && h.has_key?("vars") 
+            h["vars"].each{|key,value|
+              table << [f,key,value]
+            }
+          end
         }
       }
       # search */*.yml e.g. group_vars, host_vars
